@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'api'], function () {
-   Route::post('login', 'AuthController@login');
-   Route::delete('logout', 'AuthController@logout');
+Route::post('login', 'AuthController@login');
+Route::delete('logout', 'AuthController@logout');
 
-   Route::get('data', 'DataController@index');
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('data', 'DataController@index');
 });
